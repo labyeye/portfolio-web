@@ -32,30 +32,33 @@ const ProjectsGrid: React.FC = () => {
     setLoading(true);
     try {
       const username = 'medevs';
-
       const { data: allRepos } = await octokit.repos.listForUser({
         username,
         per_page: 100,
         sort: 'updated',
-        type: 'all', // This includes both owned and forked repositories
+        type: 'all',
       });
-
+  
+      console.log('Fetched Repositories:', allRepos); // Log repos
+  
       const allProjects: Project[] = await Promise.all(allRepos.map(async (repo) => {
         const { data: commits } = await octokit.repos.listCommits({
           owner: repo.owner?.login ?? username,
           repo: repo.name,
           per_page: 1,
         });
-
+  
+        console.log('Commits for Repo:', commits); // Log commits
+  
         const getValidDateString = (dateString: string | null | undefined): string => {
           if (dateString && !isNaN(Date.parse(dateString))) {
             return new Date(dateString).toISOString();
           }
           return new Date().toISOString();
         };
-
+  
         const latestCommitDate = commits[0]?.commit?.author?.date || repo.updated_at;
-
+  
         return {
           title: repo.name,
           description: repo.description || 'No description available',
@@ -66,25 +69,28 @@ const ProjectsGrid: React.FC = () => {
           forks: repo.forks_count || 0,
           lastUpdated: getValidDateString(repo.updated_at),
           latestCommitDate: getValidDateString(latestCommitDate),
-          isOwn: !repo.fork, // If it's not a fork, it's your own project
+          isOwn: !repo.fork,
         };
       }));
-
+  
+      console.log('All Projects:', allProjects); // Log all projects
+  
       const sortedProjects = allProjects.sort((a, b) =>
         new Date(b.latestCommitDate).getTime() - new Date(a.latestCommitDate).getTime()
       );
-
+  
       setProjects(sortedProjects);
-
+  
       const allTechs = Array.from(new Set(sortedProjects.flatMap(project => project.technologies)));
       setTechnologies(['All', ...allTechs]);
     } catch (err) {
       setError('Error fetching projects. Please try again later.');
-      console.error(err);
+      console.error('Fetch Error:', err);
     } finally {
       setLoading(false);
     }
   };
+  
 
   useEffect(() => {
     fetchProjects();
