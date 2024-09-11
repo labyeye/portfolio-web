@@ -5,20 +5,14 @@ import {
   Atom, 
   Zap, 
   Palette, 
-  Globe, 
-  BarChart, 
   Server, 
   FileCode, 
   Database, 
   Table, 
-  GitBranch, 
   Github, 
   GitCommit, 
-  Container, 
   Terminal, 
-  Rocket, 
-  Bot, 
-  Link
+
 } from 'lucide-react';
 
 const skills = [
@@ -27,21 +21,17 @@ const skills = [
   { icon: <Atom />, name: "React" },
   { icon: <Zap />, name: "Next.js" },
   { icon: <Palette />, name: "Tailwind CSS" },
-  { icon: <Globe />, name: "Webix JS" },
-  { icon: <BarChart />, name: "Ext JS" },
+  
   { icon: <Server />, name: "Node.js" },
   { icon: <FileCode />, name: "PHP" },
   { icon: <Database />, name: "MongoDB" },
   { icon: <Table />, name: "MySQL" },
-  { icon: <GitBranch />, name: "Prisma" },
+  
   { icon: <GitCommit />, name: "Git" },
   { icon: <Github />, name: "GitHub" },
-  { icon: <GitCommit />, name: "SVN" },
-  { icon: <Container />, name: "Docker" },
+
   { icon: <Terminal />, name: "VS Code" },
-  { icon: <Rocket />, name: "Astro" },
-  { icon: <Bot />, name: "OpenAI" },
-  { icon: <Link />, name: "Langchain" },
+
 ];
 
 const Technologies: React.FC = () => {

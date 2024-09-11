@@ -21,7 +21,7 @@
     "@upstash/redis": "^1.28.2",
     "ai": "^2.2.32",
     "clsx": "^2.1.0",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.3.2",
     "gray-matter": "^4.0.3",
     "html2canvas": "^1.4.1",

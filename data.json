@@ -14,11 +14,10 @@
     "topLanguages": [
       { "name": "JavaScript", "percentage": 53 },
       { "name": "TypeScript", "percentage": 30 },
-      { "name": "Astro", "percentage": 7 },
-      { "name": "CSS", "percentage": 5 },
-      { "name": "HTML", "percentage": 5 }
+      { "name": "CSS", "percentage": 8.5 },
+      { "name": "HTML", "percentage": 8.5 }
     ],
-    "memberSince": "10.10.2018"
+    "memberSince": "01.01.2021"
   },
   "websiteExistingPages": {
     "homePage": "/",
@@ -28,9 +27,8 @@
   },
   "technologies": [
     "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS",
-    "Webix JS", "Ext JS", "Node.js", "PHP", "MongoDB", "MySQL",
-    "Prisma", "Git", "GitHub", "SVN", "Docker", "VS Code",
-    "Astro", "OpenAI", "Langchain"
+     "Node.js", "PHP", "MongoDB", "MySQL",
+    "Git", "GitHub", "VS Code"
   ],
   "featuredProjects": [
     {

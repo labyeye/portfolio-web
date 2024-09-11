@@ -93,8 +93,8 @@
   "projects": [
     {
       "name": "yourdailyway",
-      "description": "Astro & React Blog",
-      "technologies": ["Astro", "React"],
+      "description": "React",
+      "technologies": ["React"],
       "link": "http://yourdailyway.com/"
     },
     {

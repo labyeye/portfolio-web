@@ -42,10 +42,10 @@ const GitHubStats: React.FC = () => {
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
-        const userResponse = await octokit.users.getByUsername({ username: 'medevs' });
+        const userResponse = await octokit.users.getByUsername({ username: 'labyeye' });
         setUserData(userResponse.data as UserData);
 
-        const reposResponse = await octokit.repos.listForUser({ username: 'medevs', per_page: 100 });
+        const reposResponse = await octokit.repos.listForUser({ username: 'labyeye', per_page: 100 });
         setRepos(reposResponse.data.map((repo): RepoData => ({
           name: repo.name,
           stargazers_count: repo.stargazers_count ?? 0, // Use nullish coalescing to default to 0
