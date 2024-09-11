@@ -14,18 +14,18 @@ export interface ProjectCardProps {
 
 const projects: Omit<ProjectCardProps, 'stars' | 'forks' | 'lastUpdated'>[] = [
   {
-    title: "Portfolio",
-    description: "A Portfolio Website with an AI chatbot that can answer any question about you.",
-    technologies: ["Next.js", "Langchain", "MongoDB", "Stripe", "tailwind"],
-    githubLink: "https://github.com/medevs/smart-portfolio",
-    liveLink: "https://medevs.xyz"
+    title: "Full Stack website for school-to-parent communication",
+    description: "Manual communication with parents was inefficient and error-prone.",
+    technologies: ["React.js", "Next.js", "Firebase", "Email Js"],
+    githubLink: "https://github.com/labyeye/school-frontend",
+    liveLink: "https://labhbothra.com"
   },
   {
-    title: "RemindMe",
-    description: "Full Stack RemindApp",
-    technologies: ["React", "Firebase", "Tailwind CSS"],
-    githubLink: "https://github.com/medevs/remind-me",
-    liveLink: "https://remind-me-beige.vercel.app"
+    title: "Attendance App",
+    description: "Full Stack AttendanceApp",
+    technologies: ["React", "Firebase", "Node.js"],
+    githubLink: "https://github.com/labyeye/attendance-app",
+    liveLink: "#"
   }
 ];
 

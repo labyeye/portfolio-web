@@ -13,57 +13,67 @@ interface TimelineItem {
 const educationItems: TimelineItem[] = [
   {
     type: 'education',
-    title: 'Fachinformatiker Anwendungsentwicklung Ausbildung',
-    organization: 'Schulzentrum SII Utbremen Bremen',
-    date: 'Sep 2021 - Mai 2024',
-    description: 'Ausbildung zum Fachinformatiker mit Schwerpunkt Anwendungsentwicklung. Fokus auf moderne Webtechnologien und Softwareentwicklungspraktiken.',
-    skills: ['JavaScript', 'React', 'Node.js', 'SQL', 'Agile Methoden']
+    title: 'Class X (CBSE)',
+    organization: 'SelaQui International School',
+    date: 'March 2019 - March 2020',
+    description: 'Scored 90%',
+    skills: ['Social Science', 'Science', 'Maths', 'Hindi']
   },
   {
     type: 'education',
-    title: 'Bachelor in Netzwerke und Telekommunikation',
-    organization: 'Université du Littoral Côte d\'Opale',
-    date: 'Okt 2018 - Nov 2019',
-    description: 'Französisches Staatsdiplom mit Schwerpunkt auf Netzwerkadministration, IT-Sicherheit und Webentwicklung. Vorbereitung auf CISCO-Zertifizierungen (CCNA1 bis CCNA4).',
-    skills: ['Netzwerkadministration', 'IT-Sicherheit', 'PHP', 'MySQL', 'Projektmanagement', 'CISCO CCNA']
+    title: 'Class XII (CBSE)',
+    organization: 'SelaQui International School',
+    date: 'March 2021 - March 2022',
+    description: 'Scored 90%',
+    skills: ['Physics', 'Chemistry', 'Maths', 'Painting']
   },
   {
     type: 'education',
-    title: 'Ausbildung in Techniken der Computerentwicklung',
-    organization: 'OFPPT Ouarzazate',
-    date: 'Sep 2016 - Jul 2018',
-    description: 'Umfassende Ausbildung in IT-Fähigkeiten, einschließlich Programmierung, Webentwicklung, Datenbankmanagement und Netzwerke.',
-    skills: ['C#', 'HTML', 'CSS', 'JavaScript', 'SQL', 'WordPress', 'Bootstrap', 'UML']
-  }
+    title: 'Bachelor of Technology in Computer Science and Engineering',
+    organization: 'Christ University',
+    date: 'August 2022 - May 2026',
+    description: 'CGPA - 9.5 SEM I -> SEM - IV',
+    skills: ['Database', 'Cryptography', 'Full Stack', 'Game Development', 'Project Management', 'Operating System']
+  },
+  
 ];
 
 const experienceItems: TimelineItem[] = [
   {
     type: 'experience',
-    title: 'Softwareentwickler',
-    organization: 'ePhilos AG',
-    date: 'Aug 2021 - Jetzt · 3 Jahre 1 Monat',
-    location: 'Bremen, Deutschland · Hybrid',
-    description: 'Verantwortlich für die Weiterentwicklung von Comfortmarkt (CM), einer Software auf Basis von PHP, Ext JS, Webix und MySQL. Optimierung und Erweiterung bestehender Webtechnologien.',
-    skills: ['PHP', 'Ext JS', 'Webix', 'MySQL', 'JavaScript', 'HTML', 'CSS']
+    title: 'Web Developer',
+    organization: 'IEEE Computer Society',
+    date: 'Aug 2023 - Jan 2024 · 6 months',
+    location: 'Bengaluru, India · Hybrid',
+    description: 'Designed a website for IEEE Computer Society inc4 conference, optimising user experience and management with a team.',
+    skills: ['PHP','JavaScript', 'HTML', 'CSS']
   },
   {
     type: 'experience',
-    title: 'NodeJS Webentwickler (Praktikum)',
-    organization: 'HM Communication',
-    date: 'Juni 2019 - Sep 2019 · 4 Monate',
-    location: 'Marrakesch, Marokko',
-    description: 'Entwicklung von Webanwendungen mit Node.js. Arbeit an verschiedenen Kundenprojekten und Verbesserung der Backend-Fähigkeiten.',
-    skills: ['Node.js', 'Express.js', 'MongoDB', 'RESTful APIs', 'Git']
+    title: 'Web Developer',
+    organization: 'Christ Incubation Center',
+    date: 'April 2024 - July 2024 · 4 months',
+    location: 'Bengaluru, India · Hybrid',
+    description: 'Developed the Christ Incubation Center website to effectively showcase their initiatives and enhance online presence.',
+    skills: ['PHP','JavaScript', 'HTML', 'CSS']
   },
   {
     type: 'experience',
-    title: 'PHP Entwickler (Praktikum)',
-    organization: 'HM Communication',
-    date: 'Juli 2018 - August 2018 · 2 Monate',
-    location: 'Marrakesch, Marokko',
-    description: 'Mitarbeit an der Entwicklung von PHP-basierten Webanwendungen. Fokus auf Backend-Entwicklung und Datenbankintegration.',
-    skills: ['PHP', 'MySQL', 'Laravel', 'HTML', 'CSS', 'JavaScript']
+    title: 'Frontend Devleoper',
+    organization: 'TIE SSO',
+    date: 'Aug 2024 - Oct 2024 · 2 months',
+    location: 'Bengaluru, India · Hybrid',
+    description: 'Contributed the TIE SSO India frontend, improving the UI and reducing support requests by 15%, in collaboration with a team.',
+    skills: ['JavaScript', 'HTML', 'CSS','BootStrap']
+  },
+  {
+    type: 'experience',
+    title: 'App Developer',
+    organization: 'Self',
+    date: 'Aug 2023 - Present',
+    location: 'Bengaluru, India · Hybrid',
+    description: 'Launched four apps, including Notes Sphere, GradeMaster Pro, CalcMate Pro, and Background Remover App, all published on the App Store, enhancing user experience and functionality.',
+    skills: ['JavaScript', 'HTML', 'CSS','API','Node.js','Express.js']
   }
 ];
 
@@ -97,16 +107,16 @@ const TimelineItem: React.FC<{ item: TimelineItem }> = ({ item }) => (
 const Timeline: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto p-4 bg-gray-100 dark:bg-gray-900 rounded-lg shadow">
-      <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">Mein Werdegang</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">My Career Path</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Berufserfahrung</h2>
+          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Work Experience</h2>
           {experienceItems.map((item, index) => (
             <TimelineItem key={index} item={item} />
           ))}
         </div>
         <div>
-          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Ausbildung</h2>
+          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Education</h2>
           {educationItems.map((item, index) => (
             <TimelineItem key={index} item={item} />
           ))}
