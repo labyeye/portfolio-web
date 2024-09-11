@@ -149,6 +149,8 @@ const ProjectsGrid: React.FC = () => {
 };
 
 const renderProjects = (projects: Project[], loading: boolean, error: string | null) => {
+  console.log('Rendering Projects:', projects); // Check if projects data is here
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -161,6 +163,10 @@ const renderProjects = (projects: Project[], loading: boolean, error: string | n
     return <div className="text-red-500 text-center">{error}</div>;
   }
 
+  if (projects.length === 0) {
+    return <div className="text-center">No projects found.</div>;
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project, index) => (
@@ -169,5 +175,6 @@ const renderProjects = (projects: Project[], loading: boolean, error: string | n
     </div>
   );
 };
+
 
 export default ProjectsGrid;
