@@ -6,9 +6,9 @@ interface Hobby {
 }
 
 const hobbies: Hobby[] = [
-  { name: 'Guitar', icon: '🎸' },
-  { name: 'Hiking', icon: '🥾' },
-  { name: 'Climbing', icon: '🧗' },
+  { name: 'Gaming', icon: '🎮' },
+  { name: 'Painting', icon: '🎨' },
+  { name: 'Music Listening', icon: '🎧' },
   { name: 'Travel', icon: '✈️' },
 ];
 

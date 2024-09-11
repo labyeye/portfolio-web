@@ -18,7 +18,7 @@ interface Project {
   isOwn: boolean;
 }
 
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+const octokit = new Octokit({ auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN});
 
 const ProjectsGrid: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);

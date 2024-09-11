@@ -1,6 +1,6 @@
 ---
-title: "Building a Family Task Manager: A Comprehensive Laravel and React Tutorial"
-date: "2023-07-18"
+title: "Building a Website for Computer Science and Engineering"
+date: "2024-09-12"
 author: "Labh Chandra Bothra"
 tags: ["Php", "Laravel", "Reactjs", "Javascript", "Web Development"]
 category: "Web Development"
