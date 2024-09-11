@@ -5,6 +5,19 @@ import { Octokit } from '@octokit/rest';
 import ProjectCard from './ProjectCard';
 import { Loader, GitBranch, User } from 'lucide-react';
 
+interface Repository {
+  name: string;
+  description: string;
+  topics: string[];
+  html_url: string;
+  homepage?: string;
+  stargazers_count: number;
+  forks_count: number;
+  updated_at: string;
+  pushed_at: string;
+  fork: boolean;
+}
+
 interface Project {
   title: string;
   description: string;
@@ -18,7 +31,7 @@ interface Project {
   isOwn: boolean;
 }
 
-const octokit = new Octokit({ auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN});
+const octokit = new Octokit({ auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN });
 
 const ProjectsGrid: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -28,7 +41,7 @@ const ProjectsGrid: React.FC = () => {
   const [technologies, setTechnologies] = useState<string[]>(['All']);
   const [activeTab, setActiveTab] = useState<'own' | 'contributed'>('own');
 
-  const fetchProjects = async () => {
+  const fetchRepositories = async () => {
     setLoading(true);
     try {
       const username = 'medevs';
@@ -36,29 +49,25 @@ const ProjectsGrid: React.FC = () => {
         username,
         per_page: 100,
         sort: 'updated',
-        type: 'all',
+        type: 'all', // This includes both owned and forked repositories
       });
-  
-      console.log('Fetched Repositories:', allRepos); // Log repos
-  
-      const allProjects: Project[] = await Promise.all(allRepos.map(async (repo) => {
+
+      const allProjects: Project[] = await Promise.all(allRepos.map(async (repo: Repository) => {
         const { data: commits } = await octokit.repos.listCommits({
           owner: repo.owner?.login ?? username,
           repo: repo.name,
           per_page: 1,
         });
-  
-        console.log('Commits for Repo:', commits); // Log commits
-  
+
         const getValidDateString = (dateString: string | null | undefined): string => {
           if (dateString && !isNaN(Date.parse(dateString))) {
             return new Date(dateString).toISOString();
           }
           return new Date().toISOString();
         };
-  
+
         const latestCommitDate = commits[0]?.commit?.author?.date || repo.updated_at;
-  
+
         return {
           title: repo.name,
           description: repo.description || 'No description available',
@@ -69,31 +78,28 @@ const ProjectsGrid: React.FC = () => {
           forks: repo.forks_count || 0,
           lastUpdated: getValidDateString(repo.updated_at),
           latestCommitDate: getValidDateString(latestCommitDate),
-          isOwn: !repo.fork,
+          isOwn: !repo.fork, // If it's not a fork, it's your own repository
         };
       }));
-  
-      console.log('All Projects:', allProjects); // Log all projects
-  
+
       const sortedProjects = allProjects.sort((a, b) =>
         new Date(b.latestCommitDate).getTime() - new Date(a.latestCommitDate).getTime()
       );
-  
+
       setProjects(sortedProjects);
-  
+
       const allTechs = Array.from(new Set(sortedProjects.flatMap(project => project.technologies)));
       setTechnologies(['All', ...allTechs]);
     } catch (err) {
-      setError('Error fetching projects. Please try again later.');
-      console.error('Fetch Error:', err);
+      setError('Error fetching repositories. Please try again later.');
+      console.error(err);
     } finally {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
-    fetchProjects();
+    fetchRepositories();
   }, []);
 
   const filteredProjects = projects.filter(project => 
@@ -104,7 +110,7 @@ const ProjectsGrid: React.FC = () => {
   return (
     <div className="space-y-6 p-6 bg-gray-50 dark:bg-gray-900 rounded-lg shadow-lg">
       <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Projects on Github</h2>
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Repositories on GitHub</h2>
         <select
           className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           value={filter}
@@ -128,7 +134,7 @@ const ProjectsGrid: React.FC = () => {
           onClick={() => setActiveTab('own')}
         >
           <User className="w-4 h-4 inline-block mr-2" />
-          My Projects
+          My Repositories
         </button>
         <button
           className={`py-2 px-4 font-medium focus:outline-none ${
@@ -139,7 +145,7 @@ const ProjectsGrid: React.FC = () => {
           onClick={() => setActiveTab('contributed')}
         >
           <GitBranch className="w-4 h-4 inline-block mr-2" />
-          Forked Projects
+          Forked Repositories
         </button>
       </div>
 
@@ -149,8 +155,6 @@ const ProjectsGrid: React.FC = () => {
 };
 
 const renderProjects = (projects: Project[], loading: boolean, error: string | null) => {
-  console.log('Rendering Projects:', projects); // Check if projects data is here
-
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -163,18 +167,17 @@ const renderProjects = (projects: Project[], loading: boolean, error: string | n
     return <div className="text-red-500 text-center">{error}</div>;
   }
 
-  if (projects.length === 0) {
-    return <div className="text-center">No projects found.</div>;
-  }
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project, index) => (
-        <ProjectCard key={index} {...project} />
-      ))}
+      {projects.length === 0 ? (
+        <div className="text-center">No repositories found.</div>
+      ) : (
+        projects.map((project, index) => (
+          <ProjectCard key={index} {...project} />
+        ))
+      )}
     </div>
   );
 };
-
 
 export default ProjectsGrid;
