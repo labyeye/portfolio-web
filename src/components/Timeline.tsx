@@ -32,7 +32,7 @@ const educationItems: TimelineItem[] = [
     title: 'Bachelor of Technology in Computer Science and Engineering',
     organization: 'Christ University',
     date: 'August 2022 - May 2026',
-    description: 'CGPA - 9.5 SEM I -> SEM - IV',
+    description: 'CGPA - 9.5 SEM I -> SEM IV',
     skills: ['Database', 'Cryptography', 'Full Stack', 'Game Development', 'Project Management', 'Operating System']
   },
   
